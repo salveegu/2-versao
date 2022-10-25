@@ -1,0 +1,73 @@
+<%- include ../../header.ejs%> 
+<%- include ../../navbar.ejs%> 
+
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-title">
+
+            <h3>Cadastro de novo artigo</h3>
+            
+           
+        </div>
+    
+        <div class="card-body">
+            <form method="POST" action="/articles/save">
+                <input  class="form-control"   type="text" class="form-control" name="title" placeholder="Nome do produto"><br>
+
+                <input  class="form-control"   type="text" class="form-control" name="preco" placeholder="Preço"><br>
+
+                <input  class="form-control"   type="text" class="form-control" name="potencia" placeholder="Potência do produto em watts"><br>
+
+                <input  class="form-control"   type="text" class="form-control" name="economia" placeholder="Nível de economia (baixo-medio-alto)"><br>
+
+                <input  class="form-control"   type="text" class="form-control" name="link" placeholder="Link do produto"><br>
+
+                
+                <p>Descrição do Produto:</p>
+                
+                <textarea class="form-control"  placeholder="escreve o artigo aqui" name="body" id="editorTexto"></textarea><br>
+
+              
+               <p>Escolha a categoria do produto:</p>
+
+                <!-- Menu de seleção de categorias, para escolher qual o artigo se  enquadra -->
+
+                
+                <select name="category" class="form-control">
+
+                <label for="">Lista de categorias:</label>
+
+                    <% categories.forEach((category)  =>{ %> 
+                        <option value=" <%= category.id %>"><%= category.title %> </option>
+    
+                        <% }) %> 
+                </select>
+                <br>
+                <button class="btn btn-success">Cadastrar</button>
+            </form>
+
+           
+
+            
+        </div>
+    </div>
+
+</div>
+<br>
+
+<%-include ../../footer.ejs%> 
+
+<script src="/tinymce/tinymce.min.js"></script>
+
+<script>
+
+    tinymce.init({
+        language: "pt_BR",
+        selector: "#editorTexto",
+        plugins: [
+            'advlist autolink link image lists print preview hr searchplace wordcount fullscreen insertdatetime media save table paste emoticons'
+        ]
+    });
+
+</script>

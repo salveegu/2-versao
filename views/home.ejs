@@ -1,0 +1,65 @@
+<%-include partials/header.ejs %>
+    <%-include partials/indexNavbar.ejs %>
+
+        <div class="container">
+
+            <hr>
+            <div class="jumbotron">
+                <h1 class="display-4">Bem-vindo</h1>
+                <p class="lead">Este é um simples sistema de recomendações de produtos elétricos de baixo consumo de
+                    energia</p>
+                <hr class="my-4">
+                <p>Digite seu gasto mensal de energia em KWH:</p>
+
+
+
+                <form method="get" action="/player/profile">
+
+                    <input class="form-control" type="text" class="form-control" name="kwhmensal"
+                        placeholder=" Energia gasta em KWH mensal:" required>
+
+                    <input class="form-control" type="text" class="form-control" name="nome"
+                        placeholder=" Digite o seu nome:" required>
+
+                    <input class="form-control" type="text" class="form-control" name="cidade"
+                        placeholder="Digite a sua cidade:" required><br>
+                        
+                    <button class="btn btn-primary btn-lg">Buscar economia</button>
+                    
+
+                </form>
+
+            </div>
+            <hr>
+
+            <%articles.forEach(article=> { %>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>
+                            <%= article.title %>
+                        </h2>
+
+                    </div>
+                    <div class="card-body">
+
+                        <a href="/<%= article.slug %> " class="btn btn-success">Ver Produto</a>
+
+                    </div>
+                </div>
+
+                <br>
+
+                <% }) %>
+
+                    <div class="row">
+                        <div class="col col-12">
+                            <a style="float:right" href="/articles/page/2">Next >>></a>
+                        </div>
+                        <hr>
+                    </div>
+                    <hr>
+        </div>
+
+        </div>
+
+        <%-include partials/footer.ejs %>

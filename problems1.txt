@@ -1,0 +1,5 @@
+1-Não estou conseguindo evitar que um campo nulo seja enviado do front para o banco de dados, preciso tratar essa verificação.
+
+2-como expotar o banco de dados que ja recebeu uns dados: 
+    -server
+    -Data export

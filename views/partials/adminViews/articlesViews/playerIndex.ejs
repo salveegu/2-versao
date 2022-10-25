@@ -1,0 +1,57 @@
+<%- include ../../header.ejs%>
+    <%- include ../../navbar.ejs%>
+
+
+        <div class="container">
+            <hr>
+
+            <h2> Index Player</h2>
+
+            <div> Olá
+
+                <table class="table table-bordered">
+
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Cidade </th>
+                            <th>kwh Mensal</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <% players.forEach(player=> { %>
+
+                                <td>
+                                    <%=player.id%>
+                                </td>
+
+                                <td>
+                                    <%=player.nome %>
+
+                                </td>
+
+                                <td>
+                                    <%=player.cidade%>
+                                </td>
+                                
+                                <td>
+
+                                    <%=player.kwhmensal%>
+                                </td>
+
+
+                        </tr>
+
+                        <% })%>
+
+
+            </div>
+
+
+        </div>
+        <%-include ../../footer.ejs%>

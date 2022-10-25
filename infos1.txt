@@ -1,0 +1,55 @@
+1-Abrir a pasta do projeto pelo cmd - basta ir até o local do projeto dar um cmd e depois digitar code . para abrir o vs code
+
+2-Ao iniciar o projeto dar um npm inits
+
+3- Pacotes instalados no programa:
+
+    npm install --save express@4.17.1     --criação e conexão de rotas com o servidor
+
+    npm install --save sequelize@5.21.0   -- integração com banco de dados
+
+    npm install --save mysql2@1.7.0         ---dependencia que o sequelize precisa para se conectar ao banco
+
+    npm install --save body-parser@1.19.0   ---dependencia especifica do express que utilizamos para trabalhar com formularios
+
+    npm install --save ejs@2.7.1      -- template engine para renderizar o html
+
+    npm install -g  nodemon@1.19.1  -- permite atualizar as modificações automaticamente no meu servidor ele fica sempre rodando
+
+    npm install --save  nodemon@1.19.1
+
+     4- Para rodar meu nodemon adicionar no meu packge.json na linha do script o comando: 
+
+        "dev":"nodemon"
+
+
+5- para a instalação do bootStrap basta descompactar a pasta e adicionar as pastas css e js na pasta public
+
+        -depois basta chamar o arquivo boostrap.min.css no header
+        -depois  ''   ''       ''      de Cdn aqueles que copiamos no site do bootstrap no footer e por ultivo chamar o arquivo bootstrap.min.js
+
+6- erro no banco ao apagar a tabela categories basta rodar o script no mySql
+        SET FOREIGN_KEY_CHECKS=0
+
+
+7- para remover a mensagem Executing (default): SELECT 1+1 AS result do mysql no console
+
+        - basta adcionar essa linha de códigio no arquivo de conexão do body:
+        logging:false
+
+                {
+                        host: 'localhost',
+                        dialect: 'mysql',
+                        logging: false
+                }
+
+
+8- Instalação do slugify - pacote utilizado para dar replace em textos tirando espaços e caracteres especiais
+
+        npm install --save slugify@1.3.5
+
+-9 usei esse comando para algum erro de banco:
+            
+            SET FOREIGN_KEY_CHECKS=0
+
+            

@@ -1,0 +1,10 @@
+Utilizer o res.json({email,senha});
+
+para testar se as variaveis estao recebendo os dados na rota
+
+
+toda vez que eu deslogar meu servidor as sessões vão deslogar
+
+para uma grande quantidade de sessoes usar o REDIS, pois por padrao os dados ficam salvos na memoria ram do pc
+
+Iniciar meu servidor npm run dev index.js

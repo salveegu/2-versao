@@ -1,0 +1,13 @@
+*{
+    
+    color: rgb(21, 113, 194);
+    text-align: center;
+    
+}
+body{
+    background-color: rgb(15, 14, 14);
+}
+
+.display-5{
+    font-size: 4vh;
+}

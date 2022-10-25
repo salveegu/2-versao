@@ -1,0 +1,1 @@
+mr-auto  Adiciona uma margem maxima a direita empurrando todo o conteudo para a esquerda
