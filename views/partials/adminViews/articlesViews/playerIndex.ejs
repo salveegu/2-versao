@@ -5,10 +5,14 @@
     <div class="container">
         <hr>
 
-        <h2> Index Artigos</h2>
+        <h2 class="display-4"> Página do usuário</h2>
         <br>
-        <a href="/admin/articles/new" class="btn btn-success"> Cadastrar novo produto </a>
+        <!-- <a href="/admin/articles/new" class="btn btn-success"> Cadastrar novo produto </a> -->
+        
+        <h1 class="display-2">Olá  <%= nome %>   sua cidade é <%= cidade %></h1>
 
+
+        
         <hr>
 
         <table class="table table-bordered">
@@ -81,7 +85,7 @@
         
             <hr>
 
-            <p>Gasto total: </p>
+            <p>Gasto total: <%= total %>  </p>
         
 
     </div>

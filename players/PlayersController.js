@@ -9,43 +9,48 @@ const articlesModel = require("../articles/ArticlesModel");
 // })
 
 router.get("/player/profile", (req, res) => {
-  
+
   console.log(req.query);
   let kwhmensal = req.query.kwhmensal;
- 
+
+  let nome = req.query.nome;
+  let cidade = req.query.cidade;
+
   var convert_kmhmensal_int = parseFloat(kwhmensal);
 
-  if(convert_kmhmensal_int<50){
+  let nivel_economia;
 
-  var nivel_economia ='baixo';
-    articlesModel.findAll({ where: { economia: nivel_economia }})
-      .then((articles) => {
-        res.render("partials/adminViews/articlesViews/playerIndex", {
-          articles: articles,
-        });
+  console.log(convert_kmhmensal_int);
+
+  if (convert_kmhmensal_int < 50) {
+    nivel_economia = 'baixo';
+  } else if (convert_kmhmensal_int >= 50 && convert_kmhmensal_int <=100) {
+    nivel_economia = 'medio';
+  } else {
+    nivel_economia = 'alto';
+  }
+
+  console.log(nivel_economia);
+
+  articlesModel.findAll({ where: { economia: nivel_economia } })
+    .then((articles) => {
+      let total =0;
+
+      articles.forEach(article => {
+
+        let convert_preco = parseFloat(article.preco);
+        
+        total = convert_preco+total;
+
       });
-    }
 
-    if(convert_kmhmensal_int>50 && convert_kmhmensal_int<100){
-
-      var nivel_economia ='medio';
-        articlesModel.findAll({ where: { economia: nivel_economia }})
-          .then((articles) => {
-            res.render("partials/adminViews/articlesViews/playerIndex", {
-              articles: articles,
-            });
-          });
-        }
-        else
-
-          var nivel_economia ='alto';
-            articlesModel.findAll({ where: { economia: nivel_economia }})
-              .then((articles) => {
-                res.render("partials/adminViews/articlesViews/playerIndex", {
-                  articles: articles,
-                });
-              });
-
+      res.render("partials/adminViews/articlesViews/playerIndex", {
+        articles: articles,
+        cidade,
+        nome,
+        total
+      });
+    });
 });
 
 // req.query
@@ -66,4 +71,4 @@ router.post("/player/save", (req, res) => {
     });
 });
 
-module.exports = router;
+module.exports = router;
