@@ -107,8 +107,7 @@ router.post("/admin/articles/update", (req,res) => {
   var economia = req.body.economia;
   var link = req.body.link;
 
-  articlesModel
-    .update(
+  articlesModel.update(
       {  title: title, body: body,preco:preco,potencia:potencia,economia:economia, categoryId: category, slug: slugify(title),link:link },
       {
         where: {

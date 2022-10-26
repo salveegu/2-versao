@@ -2,56 +2,109 @@
     <%- include ../../navbar.ejs%>
 
 
-        <div class="container">
+    <div class="container">
+        <hr>
+
+        <h2> Index Artigos</h2>
+        <br>
+        <a href="/admin/articles/new" class="btn btn-success"> Cadastrar novo produto </a>
+
+        <hr>
+
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome do produto</th>
+                    <!-- <th style="display:none">Slug</th> -->
+                    <!-- <th>Categoria</th> -->
+                    <th>Preço</th>
+                    <th>Potência</th>
+                    <th>Nível de economia</th>
+                    <th>Link</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                <% articles.forEach(article=> { %>
+                    <tr>
+                        <td>
+                            <%=article.id%>
+                        </td>
+                        <td>
+                            <%=article.title %>
+                        </td>
+                       
+                        
+                        <td>
+                            <%=article.preco%>
+                        </td>
+                        <td>
+                            <%=article.potencia%>
+                        </td>
+                        <td>
+                            <%=article.economia%>
+                        </td>
+                        
+
+                        <td>
+                            <a href="https://<%= article.link %>"><%= article.link %></a> 
+                        </td>
+                        <td>
+
+                           
+                            <a href="/admin/articles/edit/<%=article.id %>" class="btn-sm btn-warning" style="display: inline;">Editar</a>
+                           
+                            <form method="POST" action="/admin/articles/delete" 
+                                onsubmit="confirmarDelecao(event,this)">
+
+                                <input type="hidden" name="id" value="<%= article.id %> ">
+                               
+
+                                <button class="btn-sm btn-danger"> Deletar</button>
+                                
+                            </form>
+
+                        </td>
+                    </tr>
+
+                    <% })%>
+
+
+            </tbody>
+        </table>
+
+        
             <hr>
 
-            <h2> Index Player</h2>
+            <p>Gasto total: </p>
+        
 
-            <div> Olá
+    </div>
 
-                <table class="table table-bordered">
+    <%-include ../../footer.ejs%>
 
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nome</th>
-                            <th>Cidade </th>
-                            <th>kwh Mensal</th>
-
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <% players.forEach(player=> { %>
-
-                                <td>
-                                    <%=player.id%>
-                                </td>
-
-                                <td>
-                                    <%=player.nome %>
-
-                                </td>
-
-                                <td>
-                                    <%=player.cidade%>
-                                </td>
-                                
-                                <td>
-
-                                    <%=player.kwhmensal%>
-                                </td>
+        <script>
 
 
-                        </tr>
+            function confirmarDelecao(event, form) {
 
-                        <% })%>
+                event.preventDefault();
+
+                var decision = confirm("Você quer deletar esse artigo?");
+
+                if (decision) {
+                    console.log("dado apagado!");
+                    form.submit();
 
 
-            </div>
+                } else {
+                    console.log("dado nao apagado!");
+                }
+            };
 
-
-        </div>
-        <%-include ../../footer.ejs%>
+        </script>

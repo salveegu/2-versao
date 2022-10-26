@@ -32,7 +32,7 @@ Article.belongsTo(Category); //1-p-1
 Category.hasMany(Article); //1-p-n
 
 // Article.sync({force:true}); 
-//deixar sempre desativado depois de criado as tabelas
+// deixar sempre desativado depois de criado as tabelas
 
 
 module.exports = Article;
