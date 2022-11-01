@@ -4,8 +4,9 @@
         <div class="container">
 
             <hr>
-            <div class="jumbotron">
-                <h1 class="display-4">Bem-vindo</h1>
+            <div class="jumbotron bg-dark">
+                <h1 class="display-4">Economy System</h1>
+                <br>
                 <p class="lead">Este é um simples sistema de recomendações de produtos elétricos de baixo consumo de
                     energia</p>
                 <hr class="my-4">
@@ -32,8 +33,16 @@
             </div>
             <hr>
 
+            <div>
+                <p class="display-4">Produtos adicionados recentemente</p>
+            </div>
+
+            <hr>
+
+            <div class="row">
             <%articles.forEach(article=> { %>
-                <div class="card">
+                
+                <div class="card bg-dark pl-3 ml-5 mr-3" >
                     <div class="card-header">
                         <h2>
                             <%= article.title %>
@@ -41,6 +50,10 @@
 
                     </div>
                     <div class="card-body">
+                        <p>
+                            <%= article.preco %>
+                        </p>
+                       
 
                         <a href="/<%= article.slug %> " class="btn btn-success">Ver Produto</a>
 
@@ -48,9 +61,11 @@
                 </div>
 
                 <br>
-
+                
                 <% }) %>
-
+                <br>
+            </div>
+            <br>
                     <div class="row">
                         <div class="col col-12">
                             <a style="float:right" href="/articles/page/2">Next >>></a>
