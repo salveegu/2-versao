@@ -9,12 +9,13 @@ const articlesModel = require("../articles/ArticlesModel");
 // })
 
 router.get("/player/profile", (req, res) => {
-
   console.log(req.query);
-  let kwhmensal = req.query.kwhmensal;
-
+  
+  let kwhmensal = req.query.valordokwh;
   let nome = req.query.nome;
   let cidade = req.query.cidade;
+
+  // console.log(req.query);
 
   var convert_kmhmensal_int = parseFloat(kwhmensal);
 
@@ -23,32 +24,31 @@ router.get("/player/profile", (req, res) => {
   console.log(convert_kmhmensal_int);
 
   if (convert_kmhmensal_int < 50) {
-    nivel_economia = 'baixo';
-  } else if (convert_kmhmensal_int >= 50 && convert_kmhmensal_int <=100) {
-    nivel_economia = 'medio';
+    nivel_economia = "baixo";
+  } else if (convert_kmhmensal_int >= 50 && convert_kmhmensal_int <= 100) {
+    nivel_economia = "medio";
   } else {
-    nivel_economia = 'alto';
+    nivel_economia = "alto";
   }
 
   console.log(nivel_economia);
 
-  articlesModel.findAll({ where: { economia: nivel_economia } })
+  articlesModel
+    .findAll({ where: { economia: nivel_economia } })
     .then((articles) => {
-      let total =0;
+      let total = 0;
 
-      articles.forEach(article => {
-
+      articles.forEach((article) => {
         let convert_preco = parseFloat(article.preco);
-        
-        total = convert_preco+total;
 
+        total = convert_preco + total;
       });
 
       res.render("partials/adminViews/articlesViews/playerIndex", {
         articles: articles,
         cidade,
         nome,
-        total
+        total,
       });
     });
 });
@@ -71,4 +71,4 @@ router.post("/player/save", (req, res) => {
     });
 });
 
-module.exports = router;
+module.exports = router;

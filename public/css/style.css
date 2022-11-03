@@ -11,3 +11,10 @@ body{
 .display-5{
     font-size: 4vh;
 }
+
+hr{
+    
+    border: solid 2px whitesmoke;
+    opacity: 0.25;
+}
+
