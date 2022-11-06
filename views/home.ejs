@@ -16,7 +16,7 @@
 
                 <br>
 
-                <form  method="get" action="/player/profile">
+                <form method="get" action="/player/profile">
 
 
                     <div class="form-row">
@@ -62,52 +62,53 @@
                             <label for="valordokwh">Valor pago por KWH:</label>
                             <input type="text" class="form-control" name="valordokwh" placeholder="R$ KWH" required>
                         </div>
-                    </div> 
+                    </div>
 
-                     <div>
+                    <div>
 
                         <hr>
 
-                        <p class="display-4" style="font-size: 3vh ; font-weight: bold;">Parte 2- Adicionando seus Eletrodomésticos:</p>
+                        <p class="display-4" style="font-size: 3vh ; font-weight: bold;">Parte 2- Adicionando seus
+                            Eletrodomésticos:</p>
                         <br>
-                       
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="nome">Nome do modelo da Lâmpada:</label>
-                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
-                                    required>
-                            </div>
 
 
-                            <div class="form-group col-md-4">
-                                <label for="horas">Por quantas horas ela fica ligada por dia:</label>
-                                <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas"
-                                    required>
-                            </div>
+                        <div id="createEletronicProductForm">
+                           
+                            <div class="form-row" id="campos1">
 
-                            <div class="form-group col-md-4">
-                                <label for="potencia"> Potência da lampâda em watts:</label>
-                                <input type="text" class="form-control" id="potencia" name="potencia"
-                                    placeholder="Potência em W" required>
-                            </div>
-
-                            
                                
-                                    <div class="box form-group col-md-12"  id="box">
+                                <div 
+                                class="form-group col-md-4">
+                                    <label for="nome">Nome do modelo da Lâmpada:</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
+                                        required>
+                                </div>
 
-                                    </div>
-                                
-                               
 
+                                <div class="form-group col-md-4">
+                                    <label for="horas">Por quantas horas ela fica ligada por dia:</label>
+                                    <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas"
+                                        required>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="potencia"> Potência da lampâda em watts:</label>
+                                    <input type="text" class="form-control" id="potencia" name="potencia"
+                                        placeholder="Potência em W" required>
+                                </div>
+                            </div>
                         </div>
-                        <button id="add"    class="btn btn-primary btn-sm ml-2">Adicionar lampâda</button> 
-                        <button id="delete" class="btn btn-primary btn-sm ml-2" onclick="deleteCampo">Remover campo</button>
+
+                        <button id="add" class="btn btn-primary btn-sm ml-2">Adicionar lampâda</button>
+
+                        <button id="delete" class="btn btn-primary btn-sm ml-2" onclick="deleteCampo">Remover
+                            campo</button>
 
                     </div>
                     <button class="btn btn-primary btn-lg mt-2">Buscar economia</button>
                 </form>
-                
+
 
             </div>
 

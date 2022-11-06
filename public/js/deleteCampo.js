@@ -1,9 +1,8 @@
-var btn_delete = document.getElementById('delete');
+const btn_delete = document.getElementById('delete');
 
-var box = document.getElementById('box');
+const box = document.getElementById('box');
 
-   btn_delete.addEventListener('click',function(selectField) {
-
-    selectField.preventDefault();
-    selectField.closest('.box').remove();
- });
+btn_delete.addEventListener('click', (selectField) => {
+  selectField.preventDefault();
+  selectField.closest('.box').remove();
+});

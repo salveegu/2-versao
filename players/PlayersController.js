@@ -15,7 +15,7 @@ router.get("/player/profile", (req, res) => {
   let nome = req.query.nome;
   let cidade = req.query.cidade;
 
-  // console.log(req.query);
+  console.log(req.query);
 
   var convert_kmhmensal_int = parseFloat(kwhmensal);
 
@@ -23,6 +23,7 @@ router.get("/player/profile", (req, res) => {
 
   console.log(convert_kmhmensal_int);
 
+      
   if (convert_kmhmensal_int < 50) {
     nivel_economia = "baixo";
   } else if (convert_kmhmensal_int >= 50 && convert_kmhmensal_int <= 100) {
