@@ -10,20 +10,27 @@ const articlesModel = require("../articles/ArticlesModel");
 
 router.get("/player/profile", (req, res) => {
   console.log(req.query);
-  
-  let kwhmensal = req.query.valordokwh;
+
   let nome = req.query.nome;
+  let estado =req.query.estado;
   let cidade = req.query.cidade;
+
+  let nomeDistribuidora = req.query.nomeDistribuidora;
+  let valorKwh = req.query.valorKwh;
+
+  let quantidadeFaturada = req.query.quantidadeFaturada;
+  let taxas = req.query.taxas;
+  
+
 
   console.log(req.query);
 
-  var convert_kmhmensal_int = parseFloat(kwhmensal);
+  var convert_kmhmensal_int = parseFloat(valorKwh);
 
   let nivel_economia;
 
   console.log(convert_kmhmensal_int);
 
-      
   if (convert_kmhmensal_int < 50) {
     nivel_economia = "baixo";
   } else if (convert_kmhmensal_int >= 50 && convert_kmhmensal_int <= 100) {
@@ -50,6 +57,12 @@ router.get("/player/profile", (req, res) => {
         cidade,
         nome,
         total,
+        estado,
+        quantidadeFaturada,
+        nomeDistribuidora,
+        taxas,
+        valorKwh
+
       });
     });
 });

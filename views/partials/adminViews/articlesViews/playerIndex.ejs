@@ -8,30 +8,56 @@
 
             <h1 class="display-2 " style="font-size: 10vh;">Economy System</h1>
             <br>
-            <p class="display-4" style="font-size: 5vh;">  Olá <u><i><b><%=nome%></b></i></u> esses são seus dados:</p>
+            <p class="display-4" style="font-size: 5vh;">  <u><i><b><%=nome%></b></i></u> esses são seus dados:</p>
             <br>
             
-            <div class="row">
-            
-             <div class="col">
-                <label for="" style="font-size: 3vh;">Cidade:   <input class="ml-2" type="text"  id="staticEmail" value="<%= cidade %> " disabled></label>
-             </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" name="nome" value="<%= nome %>" disabled />
+                </div>
 
-             <div class="col">
-                <label for="" style="font-size: 3vh;">Cidade:   <input class="ml-2" type="text"  id="staticEmail" value="<%= cidade %> " disabled></label>
-             </div>
+                <div class="form-group col-md-3">
+                    <label for="estado">Estado:</label>
+                    <input type="text" class="form-control" name="estado"value="<%= estado %>" disabled />
+                </div>
 
-             <div class="w-100"></div>
+                <div class="form-group col-md-3">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" class="form-control" name="cidade" value="<%= cidade %>" disabled>
+                </div>  
+   </div>
 
-             <div class="col">
-                <label for="" style="font-size: 3vh;">Cidade:   <input class="ml-2" type="text"  id="staticEmail" value="<%= cidade %> " disabled></label>
-             </div>
 
-             <div class="col">
-                <label for="" style="font-size: 3vh;">Cidade:   <input class="ml-2" type="text"  id="staticEmail" value="<%= cidade %> " disabled></label>
-             </div>
-           
-        </div>
+
+<div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nomeDistribuidora">Nome da distribuidora de energia:</label>
+                    <input type="text" class="form-control" name="nomeDistribuidora"
+                       value="<%= nomeDistribuidora %> " disabled>
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label for="valorKwh">Valor pago pelo KWH:</label>
+                    <input type="text" class="form-control" name="valorKwh" value="<%=valorKwh %> "  disabled>
+                </div>
+          </div>
+
+
+<div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="quantidadeFaturada"> Consumo médio faturado (quantidade):</label>
+                    <input type="text" class="form-control" name="quantidadeFaturada"
+                       value="<%= quantidadeFaturada %> " disabled>
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label for="valordokwh">Taxas adicionais:</label>
+                    <input type="text" class="form-control" name="taxas" value="<%= taxas %> " disabled>
+                </div>
+       </div>
             
     </div>
 

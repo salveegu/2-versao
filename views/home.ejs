@@ -25,26 +25,32 @@
                             <input type="text" class="form-control" name="nome" placeholder="Nome" required>
                         </div>
 
+                        <div class="form-group col-md-3">
+                            <label for="cidade">Estado:</label>
+                            <input type="text" class="form-control" name="estado" placeholder="estado" required>
+                        </div>
 
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="cidade">Cidade:</label>
                             <input type="text" class="form-control" name="cidade" placeholder="Cidade" required>
                         </div>
+
+                        
                     </div>
 
 
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="nomeFornecedora">Nome da fornecedora de energia:</label>
-                            <input type="text" class="form-control" name="nomeFornecedora"
-                                placeholder="Nome fornecedora" required>
+                            <label for="nomeDistribuidora">Nome da distribuidora de energia:</label>
+                            <input type="text" class="form-control" name="nomeDistribuidora"
+                                placeholder="Nome da distribuidora" required>
                         </div>
 
 
                         <div class="form-group col-md-6">
-                            <label for="tarifasAdicionais">Tarifas adcionais cobradas na fatura:</label>
-                            <input type="text" class="form-control" name="tarifasAdicionais" placeholder="R$" required>
+                            <label for="tarifasAdicionais">Valor pago pelo KWH:</label>
+                            <input type="text" class="form-control" name="valorKwh" placeholder="R$" required>
                         </div>
                     </div>
 
@@ -59,8 +65,8 @@
 
 
                         <div class="form-group col-md-6">
-                            <label for="valordokwh">Valor pago por KWH:</label>
-                            <input type="text" class="form-control" name="valordokwh" placeholder="R$ KWH" required>
+                            <label for="valordokwh">Taxas adicionais:</label>
+                            <input type="text" class="form-control" name="taxas" placeholder=" Taxas adicionais" required>
                         </div>
                     </div>
 
@@ -74,14 +80,13 @@
 
 
                         <div id="createEletronicProductForm">
-                           
+
                             <div class="form-row" id="campos1">
 
-                               
-                                <div 
-                                class="form-group col-md-4">
+
+                                <div class="form-group col-md-4">
                                     <label for="nome">Nome do modelo da Lâmpada:</label>
-                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
+                                    <input type="text" class="form-control" id="nome" name="nomeLampada" placeholder="Nome"
                                         required>
                                 </div>
 
