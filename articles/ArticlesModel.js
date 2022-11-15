@@ -10,10 +10,7 @@ const Article = connection.define('articles',{
         type:Sequelize.STRING,
         allowNull:false
     },
-    body:{
-        type:Sequelize.TEXT,
-        allowNull:false
-    }, preco:{
+    preco:{
         type:Sequelize.STRING,
         allowNull:false
     }, potencia:{
@@ -22,8 +19,14 @@ const Article = connection.define('articles',{
     }, economia:{
         type:Sequelize.STRING,
         allowNull:false
+    }, marca:{
+        type:Sequelize.STRING,
+        allowNull:false
     }, link:{
         type:Sequelize.STRING,
+        allowNull:false
+    },body:{
+        type:Sequelize.TEXT,
         allowNull:false
     }
 });

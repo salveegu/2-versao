@@ -5,7 +5,7 @@
         <div class="container">
             <hr>
 
-            <h2> Index Artigos</h2>
+            <h2 class="display-4" style="font-size: 5vh"> Lista dos produtos cadastrados na base de dados  </h2>
             <br>
             <a href="/admin/articles/new" class="btn btn-success"> Cadastrar novo produto </a>
 
@@ -16,12 +16,14 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Título</th>
+                        <th>Nome</th>
                         <th style="display:none">Slug</th>
                         <th>Categoria</th>
                         <th>Preço</th>
                         <th>Potência</th>
                         <th>Nível de economia</th>
+                        <th>Marca</th>
+                        <th>Link</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -53,11 +55,17 @@
                                 <%=article.economia%>
                             </td>
                             <td>
+                                Positivo
+                            </td>
+                            <td>
+                                <%=article.link%>
+                            </td>
+                            <td>
 
                                
                                 <a href="/admin/articles/edit/<%=article.id %>" class="btn-sm btn-warning" style="display: inline;">Editar</a>
                                
-                                <form method="POST" action="/admin/articles/delete" 
+                                <form method="POST" action="/admin/articles/delete" style="display:inline"
                                     onsubmit="confirmarDelecao(event,this)">
 
                                     <input type="hidden" name="id" value="<%= article.id %> ">

@@ -73,12 +73,13 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nome do produto</th>
+                    <th>Nome</th>
                     <!-- <th style="display:none">Slug</th> -->
-                    <!-- <th>Categoria</th> -->
+                    <th>Categoria</th>
                     <th>Preço</th>
                     <th>Potência</th>
                     <th>Nível de economia</th>
+                    <th>Marca</th>
                     <th>Link</th>
                     <th>Ações</th>
                 </tr>
@@ -96,7 +97,9 @@
                             <%=article.title %>
                         </td>
                        
-                        
+                        <td>
+                            <%=article.category.title%>
+                        </td>
                         <td>
                             <%=article.preco%>
                         </td>
@@ -106,7 +109,10 @@
                         <td>
                             <%=article.economia%>
                         </td>
-                        
+                        <td>
+                            <%=article.marca%>
+                            positivo (Criar no banco)
+                        </td>
 
                         <td>
                             <a href="https://<%= article.link %>"><%= article.link %></a> 

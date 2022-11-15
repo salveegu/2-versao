@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 // const playersModel = require("./PlayersModel");
 const articlesModel = require("../articles/ArticlesModel");
-// const categoriesModel = require("../categories/CategoriesModel");
+const categoriesModel = require("../categories/CategoriesModel");
 
 // Project.findAll({ where: { name: 'A Project' } }).then(projects => {
 //   // projects will be an array of Project instances with the specified name
@@ -42,7 +42,9 @@ router.get("/player/profile", (req, res) => {
   console.log(nivel_economia);
 
   articlesModel
-    .findAll({ where: { economia: nivel_economia } })
+    .findAll({ 
+      include: [{ model: categoriesModel }],
+      where: { economia: nivel_economia } })
     .then((articles) => {
       let total = 0;
 

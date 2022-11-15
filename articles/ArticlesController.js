@@ -30,24 +30,29 @@ router.get("/admin/articles/new", (req, res) => {
 
 router.post("/articles/save",(req, res) => {
   var title = req.body.title;
+  var category = req.body.category;
   var preco = req.body.preco;
   var potencia=req.body.potencia;
   var economia = req.body.economia;
-  var body = req.body.body;
-  var category = req.body.category;
+  var marca = req.body.marca;
   var link = req.body.link;
+  var body = req.body.body;
+ 
  
  
   articlesModel
     .create({
       title: title,
+      slug: slugify(title),
+      categoryId: category,
       preco:preco,
       potencia:potencia,
       economia:economia,
-      slug: slugify(title),
+      marca:marca,
+      link: link,
       body: body,
-      categoryId: category,
-      link: link
+      
+
     })
     .then(() => {
       res.redirect("/admin/articles");
