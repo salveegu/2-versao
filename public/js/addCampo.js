@@ -13,8 +13,7 @@ btn_add.addEventListener("click", function (btn) {
 function createFields() {
   // Inicio criação da classe Row ----------------> ROW
   var formRowDiv = document.createElement("div");
-  formRowDiv.setAttribute("class", "form-row");
-  formRowDiv.setAttribute("id",`row_div_${contador}`);
+  formRowDiv.setAttribute("class", "form-row additional-row");
   //  Fim criação da classe Row ------------------>
 console.log(formDiv);
   // Inicio da classe form-group       Grupo 1

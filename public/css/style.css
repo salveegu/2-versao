@@ -14,7 +14,8 @@ body{
 
 hr{
     
-    border: solid 2px whitesmoke;
-    opacity: 0.25;
+    height: 1vh; 
+    border-radius:2vh; 
+    background: gray;
 }
 

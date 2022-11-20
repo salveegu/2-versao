@@ -3,7 +3,8 @@ const articlesModel = require("./ArticlesModel");
 const router = express.Router();
 const categoriesModel = require("../categories/CategoriesModel");
 const slugify = require("slugify");
-const adminAuth = require("../middlewares/adminAuth");
+// const adminAuth = require("../middlewares/adminAuth");
+// const charset_encodings = require("mysql2/lib/constants/charset_encodings");
 
 router.get("/admin/articles", (req, res) => {
   articlesModel
@@ -12,10 +13,19 @@ router.get("/admin/articles", (req, res) => {
       order: [["id", "DESC"]],
     })
     .then((articles) => {
+      if (articles != undefined) {
+      categoriesModel.findAll().then((categories) => { 
       res.render("partials/adminViews/articlesViews/indexArticles", {
-        articles: articles,
+        categories:categories,
+        articles: articles
+        
+      
       });
     });
+}else{
+  res.redirect("/home");
+ }
+})
 });
 
 // essa parte resume como eu trago os dados do back para o front
@@ -105,15 +115,19 @@ router.get("/admin/articles/edit/:id",(req, res) => {
 router.post("/admin/articles/update", (req,res) => {
   var id = req.body.id;
   var title = req.body.title;
-  var body = req.body.body;
   var category = req.body.category;
   var preco = req.body.preco;
-  var potencia = req.body.potencia;
+  var potencia=req.body.potencia;
   var economia = req.body.economia;
+  var marca = req.body.marca;
   var link = req.body.link;
+  var body = req.body.body;
+ 
+
+  
 
   articlesModel.update(
-      {  title: title, body: body,preco:preco,potencia:potencia,economia:economia, categoryId: category, slug: slugify(title),link:link },
+      {  title: title, body: body,preco:preco,potencia:potencia,economia:economia, categoryId: category, slug: slugify(title),link:link,marca:marca },
       {
         where: {
           id: id,
@@ -179,5 +193,8 @@ router.get("/articles/page/:num", (req, res) => {
     });
   });
 });
+
+
+
 
 module.exports = router;

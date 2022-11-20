@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-title">
 
-            <h3>Editar artigo</h3>
+            <h3>Editar Produto</h3>
             
            
         </div>
@@ -15,25 +15,37 @@
 
             <form method="POST" action="/admin/articles/update">
 
-                <input type="hidden" value="<%= article.id %>" name="id">
-                <input  class="form-control"   type="text" class="form-control" name="title" placeholder="Defina o título do artigo"><br>
+                <input  class="form-control"   type="text" class="form-control" name="title" placeholder="Nome do produto"><br>
 
-                <textarea class="form-control"  placeholder="escreve o artigo aqui" name="body" id="editorTexto"></textarea><br>
+                <input  class="form-control"   type="text" class="form-control" name="preco" placeholder="Preço"><br>
+
+                <input  class="form-control"   type="text" class="form-control" name="potencia" placeholder="Potência do produto em watts"><br>
+
+                <input  class="form-control"   type="text" class="form-control" name="economia" placeholder="Nível de eficiência energética (ENCE)"><br>
+
+                <input  class="form-control"   type="text" class="form-control" name="marca" placeholder=" Marca"><br>
+
+                <input  class="form-control"   type="text" class="form-control" name="link" placeholder="Link do produto"><br>
+
+                
+                <p>Descrição do Produto:</p>
+                
+                <textarea class="form-control"  placeholder="Descrição do produto aqui" name="body" id="editorTexto"></textarea><br>
 
               
-               
+               <p>Escolha a categoria do produto:</p>
 
                 <!-- Menu de seleção de categorias, para escolher qual o artigo se  enquadra -->
-                <label>Categoria</label>
+
                 
                 <select name="category" class="form-control">
-                    <% categories.forEach((category) => { %>
-                        <% if(category.id == article.categoryId) { %> 
-                            <option value="<%= category.id %>" selected><%= category.title %></option>
-                        <% } else { %>
-                            <option value="<%= category.id %>"><%= category.title %></option>
-                        <% } %>   
-                    <% }) %>
+
+                <label for="">Lista de categorias:</label>
+
+                    <% categories.forEach((category)  =>{ %> 
+                        <option value=" <%= category.id %>"><%= category.title %> </option>
+    
+                        <% }) %> 
                 </select>
                 <br>
                 <button class="btn btn-success">Atualizar</button>

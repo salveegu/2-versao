@@ -4,17 +4,16 @@
         <div class="container">
 
 
-            <div class="jumbotron bg-dark">
+            <div class="jumbotron bg-dark" >
                 <h1 class="display-4" style="font-size: 10vh;">Economy System</h1>
                 <br>
-                <p class="lead">Este é um simples sistema de recomendações de produtos elétricos de baixo consumo de
-                    energia</p>
+                <p class="lead">Este é um simples sistema de recomendações de produtos elétricos de baixo consumo de energia</p>
                 <hr class="mt-4">
                 <br>
-                <p class="display-4" style="font-size: 3vh ; font-weight: bold;">Parte 1: Conhecendo seu consumo atual
-                    faturado pela sua fornecedora de energia</p>
-
+                <p class="display-4" style="font-size: 3vh ; font-weight: bold;">Parte 1: Adicionar seus dados e os dados das 3 últimas faturas de energia elétrica:</p>
                 <br>
+
+               
 
                 <form method="get" action="/player/profile">
 
@@ -38,6 +37,9 @@
                         
                     </div>
 
+                    <p class="display-4 mt-4" style="font-size: 3vh ; font-weight: bold;">Dados da  1° Fatura:</p>
+                
+
 
 
                     <div class="form-row">
@@ -54,8 +56,6 @@
                         </div>
                     </div>
 
-
-
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="quantidadeFaturada"> Consumo médio faturado (quantidade):</label>
@@ -69,42 +69,54 @@
                             <input type="text" class="form-control" name="taxas" placeholder=" Taxas adicionais" required>
                         </div>
                     </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="quantidadeFaturada"> Total a pgar:</label>
+                            <input type="text" class="form-control" name="total_apagar_fatura_1"
+                                placeholder="total a pagar" required>
+                        </div>
+                    </div>
 
-                    <div>
+
+                   
+
+                      <!--___________________________________________ Dados dos eletrodmesticos___________________________________________________________________________ -->
+                      <div>
 
                         <hr>
 
-                        <p class="display-4" style="font-size: 3vh ; font-weight: bold;">Parte 2- Adicionando seus
+                        <p class="display-4 mt-4" style="font-size: 3vh ; font-weight: bold;">Parte 2- Adicionando seus
                             Eletrodomésticos:</p>
                         <br>
 
 
+                        <div id="createEletronicProductForm">
 
                             <div class="form-row">
 
 
                                 <div class="form-group col-md-4">
                                     <label for="nome">Nome do modelo da Lâmpada:</label>
-                                    <input type="text" class="form-control" id="nome" name="nomeLampada" placeholder="Nome"
+                                    <input type="text" class="form-control" id="nome" name="nomeLampada_1" placeholder="Nome"
                                         required>
                                 </div>
 
 
                                 <div class="form-group col-md-4">
                                     <label for="horas">Por quantas horas ela fica ligada por dia:</label>
-                                    <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas"
+                                    <input type="text" class="form-control" id="horas" name="horasLampada_1" placeholder="soomento numeros inteiros"
                                         required>
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label for="potencia"> Potência da lampâda em watts:</label>
-                                    <input type="text" class="form-control" id="potencia" name="potencia"
+                                    <input type="text" class="form-control" id="potencia" name="potenciaLampada_1"
                                         placeholder="Potência em W" required>
                                 </div>
                             </div>
 
                             
-                        <div id="createEletronicProductForm">
 
                         </div>
 
@@ -113,8 +125,10 @@
                         <button id="delete" class="btn btn-primary btn-sm ml-2">Remover
                             campo</button>
 
-                    </div>
-                    <button class="btn btn-primary btn-lg mt-2">Buscar economia</button>
+                        </div>
+                        <button class="btn btn-primary btn-lg mt-2">Buscar economia</button>
+
+                        </div>
                 </form>
 
 
@@ -128,29 +142,40 @@
 
             <hr>
 
+
             <div class="row">
                 <%articles.forEach(article=> { %>
 
-                    <div class="card bg-dark pl-3 ml-5 mr-3">
-                        <div class="card-header ">
-                            <h2 class="pr-2">
-                                <%= article.title %>
-                            </h2>
-
-                        </div>
-                        <div class="card-body">
-                            <p>
-                                <%= article.preco %>
-                            </p>
-
-
-                            <a href="/<%= article.slug %> " class="btn btn-success">Ver Produto</a>
-
+                    <div class="col-sm">
+                        <div class="card bg-dark ml-2 mt-2">
+                            <div class="card-header ">
+                                <h2 class="pr-2" style="font-size: 2vh ;">
+                                    <%= article.title %>
+                                </h2>
+    
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    <div class="col">
+                                        Valor: R$ <%= article.preco %>
+                                    </div>
+                                    <div class="col">
+                                        Economia:  <%=article.economia%>
+                                    </div>
+                                    <div class="col">
+                                        Marca: <%= article.marca%>
+                                    </div>
+                                 
+                                 
+                                  
+                                </p>
+    
+    
+                                <a href="/<%= article.slug %> " class="btn btn-success">Ver Produto</a>
+    
+                            </div>
                         </div>
                     </div>
-
-                    <br>
-
                     <% }) %>
                         <br>
             </div>
@@ -165,5 +190,5 @@
 
 
             <script src="/js/addCampo.js"></script>
-
+            <script src="/js/removeCampo.js"></script>
             <%-include partials/footer.ejs %>

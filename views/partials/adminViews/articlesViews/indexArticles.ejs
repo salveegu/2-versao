@@ -55,24 +55,24 @@
                                 <%=article.economia%>
                             </td>
                             <td>
-                                Positivo
+                                <%=article.marca%>
                             </td>
                             <td>
-                                <%=article.link%>
+                               <a href="http://<%=article.link%>"><%=article.link%></a> 
                             </td>
                             <td>
 
                                
-                                <a href="/admin/articles/edit/<%=article.id %>" class="btn-sm btn-warning" style="display: inline;">Editar</a>
+                                <a href="/admin/articles/edit/<%=article.id %>" class="btn-sm btn-warning" style="display:block;">Editar</a>
                                
-                                <form method="POST" action="/admin/articles/delete" style="display:inline"
+                                <form  style="display: inline;" method="POST" action="/admin/articles/delete" 
                                     onsubmit="confirmarDelecao(event,this)">
 
-                                    <input type="hidden" name="id" value="<%= article.id %> ">
+                                    <input  type="hidden"  name="id" value="<%= article.id %> ">
                                    
 
-                                    <button class="btn-sm btn-danger"> Deletar</button>
-                                    
+                                    <button  class="btn-sm btn-danger"  > Deletar</button>
+                                     
                                 </form>
 
                             </td>
