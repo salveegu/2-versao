@@ -65,7 +65,7 @@ router.get("/player/profile", (req, res) => {
      
       result = potencias.filter(potencia =>{
        var valuehour = parseFloat(potencia.dataValues.potencia)*parseFloat(int_horas_lampada_1);
-        if(valuehour <= potenciaTotalLampadaUsuario){ // faz verificação com o valor do bacno com o valor do usuario, e retorna o valor do banco caso seja valido
+        if(valuehour < potenciaTotalLampadaUsuario){ // faz verificação com o valor do bacno com o valor do usuario, e retorna o valor do banco caso seja valido
           
           console.log(valuehour)
           return valuehour;
@@ -77,8 +77,8 @@ router.get("/player/profile", (req, res) => {
         return {
           ...potencia.dataValues,
       potencia:valuehour,
-      nivelDeEconomia:valuehour/potenciaTotalLampadaUsuario
-          
+      nivelDeEconomia:parseInt((1-(valuehour/potenciaTotalLampadaUsuario))*100),
+      valorEconomizadoReais:(valuehour/1000)*float_valor_kwh_fatura_1    
         }
       })
       
