@@ -64,23 +64,26 @@ router.get("/player/profile", (req, res) => {
 
      
       result = potencias.filter(potencia =>{
-        let valuehour = parseFloat(potencia.dataValues.potencia)*parseFloat(int_horas_lampada_1);
-
+       var valuehour = parseFloat(potencia.dataValues.potencia)*parseFloat(int_horas_lampada_1);
         if(valuehour <= potenciaTotalLampadaUsuario){ // faz verificação com o valor do bacno com o valor do usuario, e retorna o valor do banco caso seja valido
+          
           console.log(valuehour)
           return valuehour;
+          
         }
       }).map(potencia =>{
+          
         let valuehour = parseFloat(potencia.dataValues.potencia)*parseFloat(int_horas_lampada_1);
         return {
           ...potencia.dataValues,
-      potencia:valuehour
+      potencia:valuehour,
+      nivelDeEconomia:valuehour/potenciaTotalLampadaUsuario
           
         }
       })
       
-      // console.log(result);
-     //  console.log(potenciaTotalLampadaUsuario);
+      //  console.log(result);
+       console.log("potencia da lampada do usuario:",potenciaTotalLampadaUsuario);
       
       
       res.render("partials/adminViews/articlesViews/playerIndex", {
@@ -91,7 +94,10 @@ router.get("/player/profile", (req, res) => {
         quantidadeFaturada,
         nomeDistribuidora,
         taxas,
-        valorKwh
+        valorKwh,
+        potenciaTotalLampadaUsuario,
+       
+       
       })
 
 
