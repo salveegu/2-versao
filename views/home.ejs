@@ -132,63 +132,65 @@
                 </form>
 
 
-            </div>
+                <hr>
 
-            <hr>
-
-            <div>
-                <p class="display-4">Produtos adicionados recentemente</p>
-            </div>
-
-            <hr>
-
-
-            <div class="row">
-                <%articles.forEach(article=> { %>
-
-                    <div class="col-sm">
-                        <div class="card bg-dark ml-2 mt-2">
-                            <div class="card-header ">
-                                <h2 class="pr-2" style="font-size: 2vh ;">
-                                    <%= article.title %>
-                                </h2>
+                <div>
+                    <p class="display-4">Produtos adicionados recentemente</p>
+                </div>
     
-                            </div>
-                            <div class="card-body">
-                                <p>
-                                    <div class="col">
-                                        Valor: R$ <%= article.preco %>
-                                    </div>
-                                    <div class="col">
-                                        Economia:  <%=article.economia%>
-                                    </div>
-                                    <div class="col">
-                                        Marca: <%= article.marca%>
-                                    </div>
-                                 
-                                 
-                                  
-                                </p>
+                <hr>
     
     
-                                <a href="/<%= article.slug %> " class="btn btn-success">Ver Produto</a>
+                <div class="row">
+                    <%articles.forEach(article=> { %>
     
+                        <div class="col-sm">
+                            <div class="card bg-dark ml-2 mt-2">
+                                <div class="card-header ">
+                                    <h2 class="pr-2" style="font-size: 2vh ;">
+                                        <%= article.title %>
+                                    </h2>
+        
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        <div class="col">
+                                            Valor: R$ <%= article.preco %>
+                                        </div>
+                                        <div class="col">
+                                            Economia:  <%=article.economia%>
+                                        </div>
+                                        <div class="col">
+                                            Marca: <%= article.marca%>
+                                        </div>
+                                     
+                                     
+                                      
+                                    </p>
+        
+        
+                                    <a href="/<%= article.slug %> " class="btn btn-success">Ver Produto</a>
+        
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <% }) %>
-                        <br>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col col-12">
-                    <a style="float:right" href="/articles/page/2">Next >>></a>
-                    <br>
-                    <hr>
+                        <% }) %>
+                            <br>
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col col-12">
+                        <a style="float:right" href="/articles/page/2">Next >>></a>
+                        <br>
+                        <hr>
+                    </div>
+                </div>
+    
+    
+                <script src="/js/addCampo.js"></script>
+                <script src="/js/removeCampo.js"></script>
+                <%-include partials/footer.ejs %>
+
             </div>
 
-
-            <script src="/js/addCampo.js"></script>
-            <script src="/js/removeCampo.js"></script>
-            <%-include partials/footer.ejs %>
+          

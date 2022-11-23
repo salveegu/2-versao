@@ -6,15 +6,15 @@
         
         <div class="jumbotron bg-dark mt-4">
 
-            <h1 class="display-2 " style="font-size: 10vh;">Economy System</h1>
-            <br>
-            <p class="display-4" style="font-size: 5vh;">  <u><i><b></b></i></u> esses são seus dados:</p>
+            <h1 class="display-2 " style="font-size: 6vh;">Economy System</h1>
+            
+            <p class="display-4" style="font-size: 5vh;">  <u><i><b></b></i></u> Bem vindo, <%= nome %> </p>
             <br>
             
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome:</label>
-                    <input type="text" class="form-control" name="nome" value="<%= nome %> " disabled />
+                    <input  type="text"  class="form-control" name="nome" value="<%= nome %> " disabled />
                 </div>
 
                 <div class="form-group col-md-3">
@@ -55,14 +55,58 @@
 
                 <div class="form-group col-md-6">
                     <label for="valordokwh">Total pago:</label>
-                    <input type="text" class="form-control" name="taxas" value=" " disabled>
+                    <input type="text" class="form-control" name="taxas" value=" <%=float_replace_total_pago_fatura_1%>"  disabled>
                 </div>
        </div>
             
     </div>
+    <hr>
+        <div>
+            <h1 class="display-2 mt-4" style="font-size: 4vh;">Produto cadastrado pelo usuário que será utilizado como base para a comparação:</h1>
+            <br>
 
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="quantidadeFaturada"> Nome do modelo da Lâmpada:</label>
+                    <input type="text" class="form-control" name="quantidadeFaturada"
+                       value=" <%= nome_lampada_1 %> " disabled>
+                </div>
+
+
+                <div class="form-group col-md-4">
+                    <label for="valordokwh">Por quantas horas ela fica ligada por dia:</label>
+                    <input type="text" class="form-control" name="taxas" value=" <%=horas_lampada_1%>"  disabled>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="valordokwh">Potência da lampâda em watts:</label>
+                    <input type="text" class="form-control" name="taxas" value=" <%=potencia_lampada_1%>"  disabled>
+                </div>
+       </div>
+
+       
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <br>
+        <label style="font-size:3vh ;" for="quantidadeFaturada"> Potência da lâmpada do usuário em Wh:</label>
         
+        <input style="height: 6vh ;"  type="text" class="form-control" name="quantidadeFaturada"
+           value=" <%=        potenciaTotalLampadaUsuario,
+           %> " disabled>
+          
+    </div>
+
+    <div class="form-group col-md-6">
         
+        <br>
+        <label style="font-size:3vh ;" for="quantidadeFaturada"> Gasto  da sua lampada em reais por 30 dias:</label>
+        
+        <input style="height: 6vh ;"  type="text" class="form-control" name="quantidadeFaturada"
+           value=" R$ <%= KWH_potenciaTotalLampadaUsuario %> " disabled>
+    </div>
+</div>
+        </div>
+        <br>
         <hr>
 
         <h1 class="display-2 mt-4" style="font-size: 5vh;">Produtos indicados com maior perfil de economia:</h1>
@@ -78,10 +122,10 @@
                     <!-- <th>Categoria</th> -->
                     <!-- <th>Preço</th>  -->
                     <th>Potência em Wh</th>
-                     <th>Nível de economia em %</th>
-                    <th>Valor ecocnomizado em reais</th>
-                    <!-- <th>Link</th>
-                    <th>Ações</th>   -->
+                     <th>Nível de economia em consumo de potência</th>
+                    <th>Gasto da lâmpada em reais durante 30 dias</th>
+                     <th>Valor economizado durante 30 dias</th>
+                     <th>Link</th>  
                 </tr>
             </thead>
 
@@ -102,14 +146,20 @@
                         
                         <td>
                             
-                            <%=article.nivelDeEconomia%>
+                            <%=article.nivelDeEconomia%> %
                         </td>
 
                         <td>
-                            <%=article.valorEconomizadoReais%>
+                           R$ <%=article.valorEconomizadoReais%>
 
                         </td>
-                       
+
+                        <td>
+                            R$ <%= article.economiaFinal %> 
+                        </td>
+                       <td>
+                        <a href="http://<%=article.link%>"><%=article.link%></a> 
+                       </td>
                     </tr>
 
                     <% })%>

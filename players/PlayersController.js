@@ -17,18 +17,20 @@ router.get("/player/profile", (req, res) => {
   let valorKwh = req.query.valorKwh;
   let quantidadeFaturada = req.query.quantidadeFaturada;
   let taxas = req.query.taxas;
-  let total_apagar_fatura_1 = req.query.total_apagar_fatura_1;
+  let total_pago_fatura_1 = req.query.total_apagar_fatura_1;
 
   // Tratando a pontuação fatura 1
   let replace_valor_kwh_fatura_1 = valorKwh.replace(",",".");
   let replace_quantidade_fatura_1 = quantidadeFaturada.replace(",",".");
   let replace_taxas_fatura_1 = taxas.replace(",",".");
+  let replace_total_pago_fatura_1= total_pago_fatura_1.replace(",",".");
 
  
   // Calculo do consumo da 1º fatura de energia do usuário - com conversão para float
   let float_valor_kwh_fatura_1 = parseFloat(replace_valor_kwh_fatura_1);
   let float_quantidade_fatura_1 = parseFloat(replace_quantidade_fatura_1);
   let float_taxas_fatura_1 = parseFloat(replace_taxas_fatura_1);
+  let float_replace_total_pago_fatura_1= parseFloat(replace_total_pago_fatura_1);
 
   let gasto_total_kwh_fatura_1 = float_valor_kwh_fatura_1*float_quantidade_fatura_1+float_taxas_fatura_1;
 
@@ -48,7 +50,11 @@ router.get("/player/profile", (req, res) => {
   let float_potencia_Lampada_1 = parseFloat(replace_potencia_Lampada_1);
   let consumo_usuario_Lampada_1 = int_horas_lampada_1 * float_potencia_Lampada_1;
 
+  // Potencia da lampada do usuario em WH
   let potenciaTotalLampadaUsuario = potencia_lampada_1*int_horas_lampada_1;
+  
+// Gasto da lampada do usuario mensal convertido já em KWH
+  let KWH_potenciaTotalLampadaUsuario = ((potenciaTotalLampadaUsuario/1000)*replace_valor_kwh_fatura_1*30).toFixed(2);
 
   let finalPower = [];
 
@@ -56,8 +62,8 @@ router.get("/player/profile", (req, res) => {
 
   articlesModel
     .findAll({ 
-      attributes: ['potencia','title'], 
-    
+      attributes: ['potencia','title','link'], 
+      
                
   })
     .then((potencias) => {
@@ -72,18 +78,23 @@ router.get("/player/profile", (req, res) => {
           
         }
       }).map(potencia =>{
-          
+        
         let valuehour = parseFloat(potencia.dataValues.potencia)*parseFloat(int_horas_lampada_1);
         return {
           ...potencia.dataValues,
       potencia:valuehour,
-      nivelDeEconomia:parseInt((1-(valuehour/potenciaTotalLampadaUsuario))*100),
-      valorEconomizadoReais:(valuehour/1000)*float_valor_kwh_fatura_1    
+      
+      nivelDeEconomia:Math.round((parseFloat((1-(valuehour/potenciaTotalLampadaUsuario))*100))),
+      
+      valorEconomizadoReais:(((valuehour/1000)*float_valor_kwh_fatura_1)*30).toFixed(2),
+      
+      economiaFinal: (KWH_potenciaTotalLampadaUsuario  - (((valuehour/1000)*float_valor_kwh_fatura_1)*30)).toFixed(2)
         }
       })
       
       //  console.log(result);
        console.log("potencia da lampada do usuario:",potenciaTotalLampadaUsuario);
+       console.log("valor pago pelo kwh",float_valor_kwh_fatura_1);
       
       
       res.render("partials/adminViews/articlesViews/playerIndex", {
@@ -96,8 +107,12 @@ router.get("/player/profile", (req, res) => {
         taxas,
         valorKwh,
         potenciaTotalLampadaUsuario,
-       
-       
+        float_replace_total_pago_fatura_1,
+        nome_lampada_1,
+        horas_lampada_1,
+        potencia_lampada_1,
+        KWH_potenciaTotalLampadaUsuario
+        
       })
 
 

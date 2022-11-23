@@ -8,3 +8,8 @@ toda vez que eu deslogar meu servidor as sessões vão deslogar
 para uma grande quantidade de sessoes usar o REDIS, pois por padrao os dados ficam salvos na memoria ram do pc
 
 Iniciar meu servidor npm run dev index.js
+
+
+trabalhando com decimais no JavaScript
+
+https://www.alura.com.br/artigos/formatando-numeros-no-javascript#:~:text=toFixed()%20arredonda%20o%20n%C3%BAmero,20.555%20%2C%20o%20valor%20fica%2020.56%20.
