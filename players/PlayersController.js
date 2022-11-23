@@ -3,6 +3,7 @@ const router = express.Router();
 // const playersModel = require("./PlayersModel");
 const articlesModel = require("../articles/ArticlesModel");
 const categoriesModel = require("../categories/CategoriesModel");
+ const { Op } = require("sequelize");
 
 router.get("/player/profile", (req, res) => {
   // Dados do formulário do usuário
@@ -49,42 +50,66 @@ router.get("/player/profile", (req, res) => {
 
   let potenciaTotalLampadaUsuario = potencia_lampada_1*int_horas_lampada_1;
 
-  
-
   let finalPower = [];
 
   let result = [];
 
   articlesModel
-    .findAll({ attributes: ['potencia']})
+    .findAll({ 
+      attributes: ['potencia','title'], 
+    
+               
+  })
     .then((potencias) => {
 
-      potencias.forEach((potencia) => {
+     
+      result = potencias.filter(potencia =>{
+        let valuehour = parseFloat(potencia.dataValues.potencia)*parseFloat(int_horas_lampada_1);
 
-        finalPower.push({ potencia: potencia.dataValues.potencia.replace(",", ".")  * int_horas_lampada_1 })
-      })
-
-      finalPower.forEach((item) => {
-        if (item.potencia < potenciaTotalLampadaUsuario) {
-          result.push({ potencia: item.potencia })
+        if(valuehour <= potenciaTotalLampadaUsuario){ // faz verificação com o valor do bacno com o valor do usuario, e retorna o valor do banco caso seja valido
+          console.log(valuehour)
+          return valuehour;
         }
-      } )
-
+      }).map(potencia =>{
+        let valuehour = parseFloat(potencia.dataValues.potencia)*parseFloat(int_horas_lampada_1);
+        return {
+          ...potencia.dataValues,
+      potencia:valuehour
+          
+        }
+      })
+      
+      // console.log(result);
+     //  console.log(potenciaTotalLampadaUsuario);
+      
+      
       res.render("partials/adminViews/articlesViews/playerIndex", {
         articles: result,
+        cidade,
+        nome,
+        estado,
+        quantidadeFaturada,
+        nomeDistribuidora,
+        taxas,
+        valorKwh
       })
 
+
+
+//map
+
+ // calculo de porcentagem de economia = valor da potencia do produto do usuario - a potencia do produto do banco
+
+     //converter o W para Kwh
+
+     // multiplicar o kwh ecnomizado pelo valor pago pelo kwh.
+
+     // valor economizado em reais = Valor pago no total da conta - 
 
       
       // res.render("partials/adminViews/articlesViews/playerIndex", {
       //   articles: articles,
-        // cidade,
-        // nome,
-        // estado,
-        // quantidadeFaturada,
-        // nomeDistribuidora,
-        // taxas,
-        // valorKwh
+       
         
       // });
     });
