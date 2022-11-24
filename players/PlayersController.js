@@ -62,7 +62,7 @@ router.get("/player/profile", (req, res) => {
 
   articlesModel
     .findAll({ 
-      attributes: ['potencia','title','link'], 
+      attributes: ['potencia','title','link','economia'], 
       
                
   })
@@ -115,24 +115,6 @@ router.get("/player/profile", (req, res) => {
         
       })
 
-
-
-//map
-
- // calculo de porcentagem de economia = valor da potencia do produto do usuario - a potencia do produto do banco
-
-     //converter o W para Kwh
-
-     // multiplicar o kwh ecnomizado pelo valor pago pelo kwh.
-
-     // valor economizado em reais = Valor pago no total da conta - 
-
-      
-      // res.render("partials/adminViews/articlesViews/playerIndex", {
-      //   articles: articles,
-       
-        
-      // });
     });
 });
 

@@ -125,7 +125,9 @@
                      <th>Nível de economia em consumo de potência</th>
                     <th>Gasto da lâmpada em reais durante 30 dias</th>
                      <th>Valor economizado durante 30 dias</th>
-                     <th>Link</th>  
+                     <th>Etiqeuta nacional(Encie)</th> 
+                     <th>Link</th> 
+                    
                 </tr>
             </thead>
 
@@ -157,6 +159,10 @@
                         <td>
                             R$ <%= article.economiaFinal %> 
                         </td>
+                        <td>
+                             <%= article.economia %> 
+                        </td>
+
                        <td>
                         <a href="http://<%=article.link%>"><%=article.link%></a> 
                        </td>
@@ -193,7 +199,7 @@
 
                 event.preventDefault();
 
-                var decision = confirm("Você quer deletar esse artigo?");
+                var decision = confirm("Você quer deletar realmente esse produto?");
 
                 if (decision) {
                     console.log("dado apagado!");
