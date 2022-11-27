@@ -109,7 +109,7 @@
         <br>
         <hr>
 
-        <h1 class="display-2 mt-4" style="font-size: 5vh;">Produtos indicados com maior perfil de economia:</h1>
+        <h1 class="display-2 mt-4" style="font-size: 5vh;">Produtos recomendados com maior perfil de economia:</h1>
         <br>
 
         <table class="table table-bordered">
@@ -125,7 +125,7 @@
                      <th>Nível de economia em consumo de potência</th>
                     <th>Gasto da lâmpada em reais durante 30 dias</th>
                      <th>Valor economizado durante 30 dias</th>
-                     <th>Etiqeuta nacional(Encie)</th> 
+                     <!-- <th>Etiqeuta nacional(Encie)</th>  -->
                      <th>Link</th> 
                     
                 </tr>
@@ -159,9 +159,7 @@
                         <td>
                             R$ <%= article.economiaFinal %> 
                         </td>
-                        <td>
-                             <%= article.economia %> 
-                        </td>
+                        
 
                        <td>
                         <a href="http://<%=article.link%>"><%=article.link%></a> 

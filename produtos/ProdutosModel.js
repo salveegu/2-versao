@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const connection = require("../database/database");
 const Category = require("../categories/CategoriesModel");
 
-const Article = connection.define('articles',{
+const Produto = connection.define('produtos',{
     title:{
         type:Sequelize.STRING,
         allowNull:false
@@ -31,8 +31,8 @@ const Article = connection.define('articles',{
     }
 });
 
-Article.belongsTo(Category); //1-p-1
-Category.hasMany(Article); //1-p-n
+Produto.belongsTo(Category); //1-p-1
+Category.hasMany(Produto); //1-p-n
 
 // Article.sync({force:true}); 
 // deixar sempre desativado depois de criado as tabelas
